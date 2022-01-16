@@ -1,0 +1,29 @@
+.box{
+  width: 100px;
+  height: 100px;
+  background-color:orange;
+  transition: 1s;
+}
+
+/* @@@@ 가상클래스 선택자 @@@@ */
+
+/* 1. hover: 마우스를 올리면 적용되는 선택자 */
+ .box:hover{     
+  width: 300px;
+  background-color:royalblue;
+}  
+
+/* 2. active: 마우스를 클릭하면 적용되는 선택자 */
+.box:active{     
+  width: 300px;
+  background-color:royalblue;
+}
+
+/* 2. focus: 포커스가 가능한 요소에만 적용가능 */
+input{
+
+}
+
+input:focus{
+  background-color:orange;
+}
