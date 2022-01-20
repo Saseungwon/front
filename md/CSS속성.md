@@ -156,7 +156,7 @@
   width: 100px;
   padding: 20px;
   border: 1px solid red;
-  
+
 
   // 142px
   ~~~
@@ -170,9 +170,119 @@
   // 100px
   ~~~
 
+<br>
 
 #### 9. overflow
 - 요소의 크기 이상으로 내용이 넘쳤을 때, 보여짐을 제어하는 단축 속성
   - visible : 기본값
   - hidden : 넘친 내용을 잘라냄
   - auto : 넘친 내용이 있는 경우에만 잘라내고 스크롤바 생성
+
+<br>
+
+#### 10. display
+- 요소의 화면 출력(보여짐) 특성
+<br>
+- 각 요소에 이미 지정되어 있는 값
+  - block : 상자 요소 (div)
+  - inline : 글자 요소 (span)
+  - inline-block : 글자 + 상자 요소
+<br>
+- 따로 지정해서 사용하는 값
+  - flex : 플렉스 박스
+  - grid : 그리드
+  - none : 보여짐 특성 없음, 화면에서 사라짐
+
+  ~~~html
+  <!-- display: block 을 통해 inline 요소인 span을 block 요소로 바꿔 
+       width와 height를 줄 수 있다.
+   -->
+
+  <span>hello world</span>
+
+  span {
+    display: block;
+    width: 100px;
+    height: 100px;
+  }
+  ~~~
+
+<br>
+
+#### 11. opacity
+- 투명도 
+  - 1 : 불투명
+  - 0~1 : 0부터 1 사이의 소수점 숫자
+
+<br>
+
+#### 12. 글꼴 
+
+- font-style (글자 기울기)
+  - normal : 기본값(기울기 없음)
+  - italic : 이텔릭체 
+<br>
+- font-weight
+  - normal, 400 : 기본 두께
+  - bold, 700 : 두껍게
+  - 100 ~ 900 : 100단위의 숫자 9단계
+<br>
+- font-size
+  - 16px : 기본 크기
+  - px, em, rem
+<br>
+- line-height
+  - 한 줄의 높이, 행간과 유사
+  - 요소의 글꼴 크기의 배수로 지정
+
+  ~~~css
+  font-size : 16px;
+
+  /* 모두 똑같이 나옴 */
+  line-height : 32px;
+  line-height : 2;  (권장)
+  line-height : 200%;
+  ~~~
+
+- font-family : 글꼴1, "글꼴2", ... **글꼴계열(필수로 작성!)**
+  - 띄어쓰기 등 특수문자가 포함된 글꼴 이름은 큰따옴표로 묶어야됨
+  - 글꼴에 후보가 있는 이유 : 후보들 중 사용가능한 글꼴을 사용함(맨 처음 글꼴부터 적용하기 시작함). 후보 중 아무것도 쓸 수 있는 것이 없으면 글꼴계열의 글꼴 중 아무거나 적용시킴
+  - serif : 바탕체
+  - sans-serif : 고딕체
+  - monospace : 고정너비 글꼴
+  - cursive : 필기체
+  - fantasy : 장식 글꼴
+
+<br>
+
+#### 13. 문자 
+- color : 글자의 색상
+  - 기본값 : rgb(0,0,0)
+  - 색상 : 기타 지정 가능한 색상
+- text-align
+  - left : 기본값
+  - right
+  - center
+- text-decoration
+  - none : 장식없음(기본값)
+  - underline : 밑줄
+  - line-througt : 중앙선
+- text-indent : 들여쓰기 
+  - 0 : 들여쓰기 없음
+  - px, em, rem 등 단위로 지정
+~~~js
+<a href="http://google.com">Google</a>
+
+a{
+  display: block;           // 인라인요소를 블럭요소로
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+  font-size: 22px;
+  color: white;             // 폰트 색
+  text-decoration: none;    // a태그 기본 스타일 밑줄 제거
+  text-align: center;       // 가운데정렬
+  line-height: 100px;       // 수직정렬 가능
+  text-indent: 50px;        // 들여쓰기  
+}
+~~~
