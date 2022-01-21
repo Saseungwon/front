@@ -286,3 +286,46 @@ a{
   text-indent: 50px;        // 들여쓰기  
 }
 ~~~
+
+
+<br>
+
+
+#### 14. 배경
+
+- background-color
+- background-image
+  - url("경로")
+- background-repeat
+  - repeat : 이미지를 수직, 수평 반복
+  - repeat-x : 이미지를 수평 반복
+  - repeat-y : 이미지를 수직 반복
+  - no-repeat : 반복 없음
+- background-position
+  - 방향 : top, bottom, left, right, center
+  - 단위 : px, em, rem
+- background-size
+  - auto : 이미지의 실제 크기
+  - 단위 : px, em, rem
+  - cover : 비율을 유지, 요소의 더 넓은 너비에 맞춤
+  - contain : 비율을 유지, 요소의 더 짧은 너비에 맞춤
+- background-attachment : 요소의 배경 이미지 스크롤 특성
+  - scroll : 이미지가 요소를 따라서 같이 스크롤
+  - fixed : 이미지가 뷰포트에 고정, 스크롤 X
+
+
+~~~js
+<div></div>
+
+div{
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+  background-image: url("경로");
+  background-size: 70px;
+  background-repeat: no-repeat;        // 이미지를 반복하지 않겠다
+  background-positions: top right;     // 이미지를 우측 위에 정렬
+  background-attachment: scroll;
+}
+~~~
+
