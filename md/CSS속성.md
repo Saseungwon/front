@@ -312,8 +312,9 @@ a{
 - background-attachment : 요소의 배경 이미지 스크롤 특성
   - scroll : 이미지가 요소를 따라서 같이 스크롤
   - fixed : 이미지가 뷰포트에 고정, 스크롤 X
-
   
+
+
 
 
 ~~~js
