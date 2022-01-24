@@ -312,7 +312,7 @@ a{
 - background-attachment : 요소의 배경 이미지 스크롤 특성
   - scroll : 이미지가 요소를 따라서 같이 스크롤
   - fixed : 이미지가 뷰포트에 고정, 스크롤 X
-  
+
 
 
 
@@ -332,3 +332,191 @@ div{
 }
 ~~~
 
+<br>
+
+#### 15. position
+- 요소의 위치 지정 기준
+  - relative : 요소 자신을 기준으로 배치가 됨
+  - **absolute** : 위치 상 부모 요소를 기준으로 배치가 됨, 가장 많이 사용
+  - fixed : 뷰포트(브라우저)를 기준으로 배치가 됨
+  - static : static은 position을 안 준 거랑 똑같다
+<br>
+
+- top, bottom left, right : 요소의 각 방향별 거리 지정
+
+  ~~~js
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+
+
+  .container{
+    width: 300px;
+    background-color: royalblue;
+    position: relative; // 부모요소는 가장 무난하게 relative 사용
+  }
+  .container .item{
+    border: 4px dashed red;
+    background-color: orange;
+  }
+  .container .item:nth-child(1){
+    width: 100px;
+    height: 100px;
+  }
+  .container .item:nth-child(2){
+    width: 140px;
+    height: 70px;
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+  }
+  .container .item:nth-child(3){
+    width: 70px;
+    height: 120px;
+  }
+  ~~~
+
+- 자식요소에 absolute를 이용했으면 구조상 부모에 relative
+  ~~~js
+  <div class="wrap">
+    <div class="container">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+  </div>
+
+
+  .wrap{
+    width: 400px;
+    height: 300px;
+    background-color: tomato;
+    position: relative; 
+  }
+  .container{
+    width: 300px;
+    background-color: royalblue;
+  }
+  .container .item{
+    border: 4px dashed red;
+    background-color: orange;
+  }
+  .container .item:nth-child(1){
+    width: 100px;
+    height: 100px;
+  }
+  .container .item:nth-child(2){
+    width: 140px;
+    height: 70px;
+    position: absolute; // absolute를 이용했으면 구조상 부모에 relative
+    bottom: 30px;
+    right: 60px;
+  }
+  .container .item:nth-child(3){
+    width: 70px;
+    height: 120px;
+  }
+  ~~~
+
+
+- fixed를 사용하면 모두 무시하고 뷰포트를 기준으로 배치됨
+  - 사이드에 배너 고정을 위해 사용하기도 함
+  ~~~js
+  <div class="wrap">
+    <div class="container">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+  </div>
+
+
+  .wrap{
+    width: 400px;
+    height: 300px;
+    background-color: tomato;
+    position: relative; 
+  }
+  .container{
+    width: 300px;
+    background-color: royalblue;
+  }
+  .container .item{
+    border: 4px dashed red;
+    background-color: orange;
+  }
+  .container .item:nth-child(1){
+    width: 100px;
+    height: 100px;
+  }
+  .container .item:nth-child(2){
+    width: 140px;
+    height: 70px;
+    position: fixed; // fixed는 뷰포트 기준
+    bottom: 30px;
+    right: 60px;
+  }
+  .container .item:nth-child(3){
+    width: 70px;
+    height: 120px;
+  }
+  ~~~
+
+- 요소 쌓임 순서(Stack order)
+  1. 요소에 position 속성의 값이 있는 경우 위에 쌓임
+  2. 1번 조건이 같은 경우, z-index 속성의 숫자 값이 높을 수록 위에 쌓임
+  3. 1번과 2번 조건까지 같은 경우, html의 다음 구조일수록 위에 쌓임 
+  ~~~js
+  <div class="wrap">
+    <div class="container">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+  </div>
+
+
+  .wrap{
+    width: 400px;
+    height: 300px;
+    background-color: tomato;
+    position: relative; 
+  }
+  .container{
+    width: 300px;
+    background-color: royalblue;
+  }
+  .container .item{
+    border: 4px dashed red;
+    background-color: orange;
+  }
+
+  // 요소 쌓임 순서 공부
+  .container .item:nth-child(1){
+    position: relative;
+    z-index: 1;
+  }
+  .container .item:nth-child(2){
+    position: absolute;
+    top: 50px;
+    left: 50px;
+  }
+  // 아무리 z-index가 높아도 position이 없으면 적용이 안 된다.
+    // 요소를 쌓고 싶으면 position을 꼭 넣어주자
+    // 주의 : position:static은 안 한 거랑 마찬가지.
+  .container .item:nth-child(3){
+    z-index: 2;     
+  }
+  ~~~
+
+- z-index
+  - auto : 부모 요소와 동일한 쌓임 정도
+  - 숫자 : 숫자가 높을수록 위에 쌓임
+
+  <br>
+- 요소의 display가 변경됨
+  - position 속성의 값으로 **absolute, fixed**가 지정된 요소는, **display: block**으로 변경됨.
+  - relative는 제외
