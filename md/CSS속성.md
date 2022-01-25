@@ -520,3 +520,168 @@ div{
 - 요소의 display가 변경됨
   - position 속성의 값으로 **absolute, fixed**가 지정된 요소는, **display: block**으로 변경됨.
   - relative는 제외
+
+
+  <br>
+
+#### 16. 플렉스(정렬)
+- flex는 Flex Container(부모요소)와 Flex Items(자식요소)로 나눠진다.
+- 부여할 수 있는 속성들이 서로 다르다.
+<br>
+
+- Flex Container
+  1. display(Flex Container의 화면 출력 특성)
+      - flex 요소 : 블록 요소와 같이 Flex Container 정의
+      - inline-flex : 인라인 요소와 같이 Flex Container 정의
+      ~~~js
+      <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+      <div>
+
+
+      .container{
+        background-color: royalblue;
+        display: flex;    // 수직으로 쌓여져있던 요소들일 수평으로 정렬됨
+      }
+      .container .item{
+        width: 100px;
+        height: 100px;
+        border: 3px dashed red;
+        background-color: orange;
+      }
+      ~~~
+
+  2. flex-direction(주 축을 설정, 수직정렬? 수평정렬?)
+      - row(기본값) : 행 축(좌 => 우), 수평정렬
+      - row-reverse : 행 축(우 => 좌), 수평정렬
+
+      ~~~js
+      display: flex;
+      flex-direction: row;
+      ~~~
+
+  3. flex-wrap(flex item 묶음(줄 바꿈) 여부)
+      - nowrap(기본값) : 묶음(줄 바꿈) 없음
+      - wrap : 여러 줄로 묶음
+       ~~~js
+      display: flex;
+      flex-wrap: wrap;    // 한 줄에서 요소가 넘치면 줄바꿈 해줌
+
+      ~~~     
+
+
+      ~~~js
+      <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+      <div>
+
+
+      .container{
+        width: 400px;
+        background-color: royalblue;
+        display: flex;    // 수직으로 쌓여져있던 요소들일 수평으로 정렬됨
+        flex-wrap: wrap;  // 요소가 넘치면 자동으로 줄바꿈됨
+      }
+      .container .item{
+        width: 100px;
+        height: 100px;
+        border: 3px dashed red;
+        background-color: orange;
+      }
+      ~~~
+
+    4. justify-content (주 축의 정렬 방법, 수평정렬)
+        - flex-start(기본값) : Flex Items를 시작점으로 정렬
+        - flex-end : Flex Items를 끝점으로 정렬
+        - center : Flex Items를 가운데 정렬
+
+        ~~~js
+        display: flex;
+        justify-content: flex-end // 우측 정렬
+        justify-content: center   // 가운데 정렬
+        ~~~     
+
+    5. align-content (교차 축의 **여러 줄 정렬 방법**, 수직정렬)
+        - stretch(기본값) : Flex Items를 시작점으로 정렬
+        - flex-start : Flex Items를 시작점으로 정렬
+        - flex-end : Flex Items를 끝점으로 정렬
+        - center : Flex Items를 가운데 정렬
+
+        ~~~js
+        // align-content의 조건
+        //    1. 줄 바꿈 상태여야 하고(flex-wrap)
+        //    2. 정렬이 가능한 빈 공간이 있어야 하고
+        //    3. item이 두 줄 이상이 되어야 함
+        //    조건이 까다로워서 많이 사용하진 않음
+
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-center;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        ~~~     
+
+    6. align-items (교차 축의 **한 줄 정렬 방법**, 수직정렬)
+        - stretch(기본값) : Flex Items를 시작점으로 정렬
+        - flex-start : Flex Items를 시작점으로 정렬
+        - flex-end : Flex Items를 끝점으로 정렬
+        - center : Flex Items를 가운데 정렬
+
+        ~~~js
+        // align-content의 조건
+        //    1. 줄 바꿈 상태여야 하고(flex-wrap)
+        //    2. 정렬이 가능한 빈 공간이 있어야 하고
+        //    3. item이 두 줄 이상이 되어야 함
+        //    조건이 까다로워서 많이 사용하진 않음
+        
+        width: 100px;
+        height: 100px;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+
+        display: flex;
+        align-items: center;
+
+        ~~~     
+
+        ~~~js
+        <div class="container">
+          <div class="item">1</div>
+          <div class="item">2</div>
+          <div class="item">3</div>
+        <div>
+
+
+        .container{
+          width: 500px;
+          height: 300px;
+          background-color: royalblue;
+          display: flex;   
+          justify-content: center;   // 수평 가운데 정렬
+          align-items: center;       // 한줄 수직 가운데 정렬
+        }
+        .container .item{
+          width: 100px;
+          height: 100px;
+          border: 3px dashed red;
+          background-color: orange;
+        }
+        ~~~
