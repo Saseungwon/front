@@ -529,7 +529,7 @@ div{
 - 부여할 수 있는 속성들이 서로 다르다.
 <br>
 
-- Flex Container
+- **Flex Container**
   1. display(Flex Container의 화면 출력 특성)
       - flex 요소 : 블록 요소와 같이 Flex Container 정의
       - inline-flex : 인라인 요소와 같이 Flex Container 정의
@@ -685,3 +685,95 @@ div{
           background-color: orange;
         }
         ~~~
+
+<br>
+
+- **Flex Items**
+<br>
+  1. order(Flex Item의 순서)
+      - 0(기본값) : 순서 없음
+      - 숫자 : 숫자가 작을수록 먼저
+<br>
+  2. flex-grow(Flex Item의 증가 너비 비율)
+      - 0(기본값) : 증가 비율 없음
+      - 숫자 : 증가 비율
+<br>
+  3. flex-shrink(Flex Item의 감소 너비 비율)
+      - 1(기본값) : Flex Container 너비에 따라 감소 비율 적용
+      - 숫자 : 감소 비율
+      - 컨테이너가 줄지 않게 하려면 flex-shrink:0 을 사용
+<br>
+  4. flex-basis(Flex Item의 공간 배분 전 기본 너비)
+      - auto(기본값) : 요소의 Content 너비
+      - 단위 : px, em, rem 등 단위로 지정
+      - auto로 하면 요소 내의 내용에 따라 너비가 달라진다.
+        - 이걸 해결하려면 flex-basis: 0 으로 설정하면 된다. 
+
+      ~~~js
+      <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+      <div>
+
+
+      .container{
+        background-color: royalblue;
+        display: flex;   
+      }
+      .container .item{
+        width: 100px;
+        height: 100px;
+        border: 3px dashed red;
+        background-color: orange;
+        flex-grow: 1;   // 요소의 주축의 넓이의 비율을 1로 만듦
+        flex-basis: 0;
+      }
+      .container .item:nth-child(3){
+        flex-grow: 2;    // 3번째 요소의 비율을 2로 만듦
+      }
+      ~~~
+
+<br>
+
+#### 17. 전환
+- 전환효과 : 전 상태와 후 상태의 중간 단계를 자연스럽게 만들어주는 것
+<br>
+- transition : 속성명  **지속시간(필수)**  타이밍함수  대기시간;
+<br>
+  1. transition-property(전환 효과를 사용할 속성 이름 지정)
+      - all(기본값) : 모든 속성에 적용
+      - 속성이름 : 전환 효과를 사용할 속성 이름 명시
+  2. transition-duration(전환효과의 지속시간을 지정)
+      - 0s(기본값) : 전환 효과 없음
+      - 시간 : 지속시간(s)을 지정
+  3. transition-timing-function(전환 효과의 타이밍(Easing) 함수를 지정)
+      - ease(기본값) : 느리게 - 빠르게 - 느리게
+      - linear : 일정하게
+      - ease-in : 느리게 - 빠르게
+      - ease-out : 빠르게 - 느리게
+      - ease-in-out : 느리게 - 빠르게 - 느리게
+  4. transition-delay(전환 효과가 몇초 뒤에 시작할지 대기시간을 지정)
+
+📌 easing 링크
+  - https://easings.net/ko
+  - https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function
+  - https://greensock.com/docs/v2/Easing
+
+~~~js
+<div></div>
+
+div{
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  transition: 
+      width .5s(지속시간) 1s(대기시간),
+      background-color 2s; 
+      // ,(쉼표를 통해 여러 개의 단축 속성값들을 입력할 수 있다.) 
+}
+div:active{
+  width: 300px;
+  background-color: royalblue;
+}
+~~~
