@@ -781,3 +781,115 @@ div:active{
   background-color: royalblue;
 }
 ~~~
+
+#### 18. 전환
+
+- 요소의 변환 효과
+  - transform: 변환함수1 변환함수2 변환함수3 ...;
+  - transform: 원근법 이동 크기 회전 기울임; 
+
+~~~js
+<div class="container">
+  <div class="item">AB</div>
+</div>
+
+
+body{
+  padding: 100px;
+}
+.container{
+  width: 100px;
+  height: 100px;
+  background-color: royalblue;
+}
+.container .item{
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  transform: rotate(45deg) scale(1.3);  
+  // transform : 변환함수(회전, 이동, 기울이기)
+  // deg : degree(각도)
+
+}
+~~~
+
+<br>
+
+1. 2D 변환함수
+    - translate(x,y) : 이동(x축, y축), px
+    - translateX(x) : 이동(x축), px
+    - translateY(y) : 이동(y축), px
+    - scale(x,y) : 크기(x축, y축)
+    - rotate(degree) : 회전(각도), deg
+    - skewX(x) : 기울임(x축), deg
+    - skewY(y) : 기울임(y축), degree
+
+<br>
+
+2. 3D 변환함수
+    - perspective(n) : 원근법(거리), px
+    - rotateX(x) : 회전(x축)
+    - rotateY(y) : 회전(y축)
+
+  ~~~js
+  transfrom : perspective(500px) rotateX(45deg);
+  // 원근법 함수는 제일 앞에 작성해야 작동한다. 
+  ~~~
+
+~~~js
+<div class="container">
+  <div class="item">AB</div>
+</div>
+
+
+
+body{
+  padding: 100px;
+}
+.container{
+  width: 100px;
+  height: 100px;
+  background-color: royalblue;
+}
+.container .item{
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  transform: perspective(300px) rotateX(45deg)
+             translateX(100px);
+  // 원근법 함수는 제일 앞에 작성해야한다. 
+}
+~~~
+
+<br>
+
+- perspective : 하위 요소를 관찰하는 원근 거리를 지정, px
+
+<br>
+
+- perspective 속성과 함수 차이점
+
+  |제목|내용|설명|
+  |------|---|---|
+  |perspective: 600px;|관찰 대상의 부모|perspective-origin|
+  |transform: perspective(600px);|관찰 대상|transform-origin|
+
+  ~~~js
+  // 함수 perspective : 대상에 직접 원근법 준다. 
+  transfrom: perspective(500px) rotate(45deg);
+  
+  // 속성 perspective : 관찰 대상의 부모 기준으로 원근법 준다.(권장)
+  transform: rotateY(45deg);
+  perspective: 500px; 
+  ~~~
+<br>
+
+- backface-visibility
+  - 3D 변환으로 회전된 요소의 뒷면 숨김 여부 적용
+  - visible(기본값) : 뒷면 보임
+  - hidden : 뒷면 숨김
+  ~~~js
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  ~~~
+  
