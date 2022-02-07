@@ -19,3 +19,5 @@ console.log(user);
 console.log(user.age);// 27 
 console.log(user.name2); // SSW2
 
+
+
