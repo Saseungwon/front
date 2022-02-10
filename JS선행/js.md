@@ -175,3 +175,111 @@ console.log(a / b); // 0.4
   <br>
 
 #### 6. 함수
+- function : 특정 동작을 수행하는 일부 코드의 집합을
+~~~js
+// 함수 선언
+function helloFunc(){
+  // 실행 코드 
+    console.log(1234);
+}
+
+// 함수 호출
+helloFunc(); // 1234
+~~~
+
+~~~js
+function returnFunc(){
+  return 123;   // 123을 반환해준다.
+}
+
+let a = returnFunc(); // 123을 a가 받는다.
+
+console.log(a); // 123
+~~~
+
+~~~js
+// 함수 선언
+function sum(a, b){   // a, b는 매개변수(Parameters)
+  return a + b;
+}
+
+// 재사용
+let a = sum(1, 2);    // 1과 2는 인수(Arguments) 
+let b = sum(7, 12); 
+let c = sum(2, 4); 
+
+console.log(a, b, c); // 3, 19, 6
+~~~
+- 기명(이름이 있는) 함수
+  ~~~js
+  // 기명(이름이 있는) 함수 
+  // 함수 선언!!
+  function hello(){
+    console.log('hello');
+  }
+
+  //함수 호출!
+  hello();    // hello
+  ~~~
+- 익명(이름이 없는) 함수
+  - 함수 이름이 없으면 호출할 수 없음
+  - 익명함수는 대부분 변수에 할당해서 사용하거나, 데이터로 활용함
+  ~~~js
+  // 익명(이름이 없는) 함수
+  // 함수 표현!
+  let world = function(){
+    console.log('world');
+  }
+
+  //함수 호출!
+  world();    // world
+  ~~~
+
+- 객체 데이터
+  ~~~js
+  const ssw = {
+    name: 'SSW',
+    age : 27,
+    // 메소드(Method)
+    getName: function(){
+      return this.name;
+    }
+  };
+
+  const hisName = ssw.getName();
+  console.log(hisName); // SSW
+  // 혹은
+  console.log(ssw.getName()); // SSW
+  ~~~
+
+<br>
+
+#### 7. 조건문
+- 조건의 결과에 따라 다른 코드를 실행하는 구문
+  - if
+  - else
+
+~~~js
+let isShow = true;
+let checked = false;
+
+if(isShow){
+  console.log('Show!'); // Show!
+}
+
+if(checked){
+  console.log('Checked!'); 
+}
+~~~
+
+~~~js
+let isShow = true;
+
+if(isShow){
+  console.log('Show!');
+}else{
+  console.log('Hide?');
+}
+
+// Show!
+~~~
