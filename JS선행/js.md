@@ -283,6 +283,120 @@ if(isShow){
 }
 
 // Show!
-
-
 ~~~
+
+<br>
+
+#### 8. DOM API
+- DOM : Document Object Model
+- API : Application Programming Interface
+
+- DOM API : html을 제어하는 명령들
+<br>
+
+1. HTML 요소 1개 검색/찾기
+    ~~~js
+    const boxEl = document.querySelector('.box');
+    ~~~
+
+2. HTML 요소에 적용할 수 있는 메소드
+    ~~~js
+    boxEl.addEventListener();
+    ~~~
+
+3. HTML 요소에 적용할 수 있는 메소드
+    ~~~js
+    boxEl.addEventListener(1, 2);
+    ~~~
+
+4. 1 - 이벤트(Event, 상황)
+    ~~~js
+    boxEl.addEventListener('click, 2');
+    ~~~
+
+5. 2 - 핸들러(Handler, 실행할 함수)
+    ~~~js
+    boxEl.addEventListener('click', function(){
+      console.log('Click~!');
+    });
+    ~~~
+
+6. HTML 요소 검색/찾기
+    ~~~js
+    const boxEl = document.querySelector('.box');
+    ~~~
+
+7. 요소의 클래스 정보 객체 활용!
+    ~~~js
+    boxEl.classList.add('active');    
+    // boxEl을 가지고 있는 클레스에 active 추가
+
+    let isContains = boxEl.classList.contains('active');  
+    // let은 재할당 가능
+    // boxEl에 클래스 내부에서 active가 포함되어 있는지 체크하는 것 있으면 true 없으면 false
+    console.log(isContains); // true
+
+    boxEl.classList.remove('active');
+    // boxEl라는 요소에서 active라는 클래스 삭제 
+    isContains = boxEl.classList.contains('active');
+    console.log(isContains); // false
+    ~~~
+
+8. HTML 요소 모두 검색/찾기
+    ~~~js
+    const boxEls = document.querySelectorAll('.box');
+    console.log(boxEls); 
+    ~~~
+
+9. 찾은 요소들 반복해서 함수 실행, 익명 함수를 인수로 추가
+    ~~~js
+    boxEls.forEach(function () {});
+    ~~~
+
+
+    
+
+10. 첫 번째 매개변수(boxEl) : 반복 중인 요소
+  두 번째 매개변수(index) : 반복 중인 번호
+    ~~~js
+    boxEls.forEach(function(boxEl, index) {} ); 
+    ~~~
+
+
+11. 출력
+    ~~~js
+    boxEls.forEach(function (boxEl, index) {
+      boxEl.classList.add(`order-${index + 1}`);
+      console.log(index, boxEl); 
+    })
+    ~~~
+
+12. Getter, Setter
+    ~~~js
+    const boxEl = document.querySelector('.box');   // box 클래스를 가진 요소 중 제일 처음 찾아진 요소에 할당해줌
+
+    // Getter, 값을 얻는 용도
+    console.log(boxEl.textContent); // Box!!
+        // text로만 이뤄진 Content만 반환됨 
+
+    // Setter, 값을 지정하는 용도
+    boxEl.textContent = 'SSW!';
+    console.log(boxEl.textContent); // SSW!
+    ~~~
+
+
+<br>
+
+#### 9. 메소드 체이닝(Method Chaining)
+- 메소드를 붙여서, 연결해서 사용하는 것
+  ~~~js
+  const a = 'Hello~'; 
+  // split: 문자를 인수 기준으로 쪼개서 배열로 반환
+  // reverse : 배열을 뒤집기
+  // joinm : 배열을 인수 기준으로 문자로 병합해 반환
+
+  const b = a.split('').reverse().join(''); // <- 이런 게 메소드 체이닝
+
+  console.log(a); // Hello~
+  console.log(b); // ~olleH
+  ~~~
