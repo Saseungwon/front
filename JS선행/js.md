@@ -8,6 +8,8 @@
 - PascalCase(js)
   - TheQuickBrownFoxJumpsOverTheLazyDog
 
+<br>
+
 #### 2. Zero-based Numbering
 - 0 기반 번호 매기기! js는 특수한 경우를 제외하고 0부터 시작한다. 
 
@@ -22,6 +24,8 @@
   console.log(new Date('2021-01-30').getDay()); // 0, 일요일
   console.log(new Date('2021-01-30').getDay()); // 1, 월요일
   ~~~
+
+<br>
 
 #### 3. 데이터 종류(자료형)
 
@@ -122,7 +126,7 @@
   console.log(fruits[2]); // 'Cherry'
   ~~~
 
-
+<br>
 
 #### 4. 변수
 - 데이터를 저장하고 참조하는 데이터의 이름
@@ -393,7 +397,7 @@ if(isShow){
   const a = 'Hello~'; 
   // split: 문자를 인수 기준으로 쪼개서 배열로 반환
   // reverse : 배열을 뒤집기
-  // joinm : 배열을 인수 기준으로 문자로 병합해 반환
+  // join : 배열을 인수 기준으로 문자로 병합해 반환
 
   const b = a.split('').reverse().join(''); // <- 이런 게 메소드 체이닝
 
